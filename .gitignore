@@ -7,11 +7,12 @@
 # Ignore bundler config
 /.bundle
 
+#email pw
+/email.credentials
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-# temporary until email address is moved out of this file
-config/environments/development.rb
