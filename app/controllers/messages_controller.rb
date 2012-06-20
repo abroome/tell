@@ -40,6 +40,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+    # we need to check for / create sender and receiver here.
     @message = Message.new(params[:message])
 
     respond_to do |format|
