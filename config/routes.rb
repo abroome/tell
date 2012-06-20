@@ -1,4 +1,6 @@
 Tell::Application.routes.draw do
+  resources :people
+
   resources :messages
 
   # The priority is based upon order of creation:
