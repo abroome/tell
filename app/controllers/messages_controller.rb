@@ -41,7 +41,20 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     # we need to check for / create sender and receiver here.
+message_params = params[:message]
+ 
+    sender_email =  message_params[:from]
+    receiver_email = message_params[:to]
+    sender_email_hashed = Digest::SHA2.hexdigest( sender_email)
+    receiver_email_hashed = Digest::SHA2.hexdigest( receiver_email)
+
+    sender = Person.create(email: sender_email, email_hash: sender_email_hashed, verified: true)
+	reciever = Person.create(email: receiver_email, email_hash: receiver_email_hashed, verified: false)
+	
     @message = Message.new(params[:message])
+    @message.save
+    
+    MessageMailer.send_message(@message).deliver
 
     respond_to do |format|
       if @message.save

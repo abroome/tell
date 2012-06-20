@@ -13,3 +13,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+# temporary until email address is moved out of this file
+config/environments/development.rb
